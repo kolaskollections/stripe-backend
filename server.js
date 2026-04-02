@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const stripe = new Stripe(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);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 app.post('/create-checkout-session', async (req, res) => {
   const items = req.body.items;
@@ -14,7 +14,6 @@ app.post('/create-checkout-session', async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
     mode: 'payment',
-
     line_items: items.map(item => ({
       price_data: {
         currency: 'cad',
@@ -25,9 +24,8 @@ app.post('/create-checkout-session', async (req, res) => {
       },
       quantity: item.quantity,
     })),
-
-    success_url: 'https://kolaskollections.github.io/.ca/success.html',
-cancel_url: 'https://kolaskollections.github.io/.ca/cart.html',
+    success_url: 'https://kolaskollections.github.io/ca/success.html',
+    cancel_url: 'https://kolaskollections.github.io/ca/cart.html',
   });
 
   res.json({ url: session.url });
