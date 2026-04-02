@@ -1,0 +1,8 @@
+{
+  "Vintage Piece": { "price": 5, "stock": 3 },
+  "Rare Find": { "price": 10, "stock": 2 },
+  "Classic Thrift": { "price": 5, "stock": 1 },
+  "Luxury Vintage": { "price": 20, "stock": 2 },
+  "Designer Piece": { "price": 10, "stock": 4 },
+  "Curated Find": { "price": 30, "stock": 1 }
+}
