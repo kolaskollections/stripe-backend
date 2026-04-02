@@ -8,9 +8,13 @@ app.use(express.json());
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
+app.get('/', (req, res) => {
+  res.send('Backend is running');
+});
+
 app.post('/create-checkout-session', async (req, res) => {
   try {
-    const items = req.body.items;
+    const items = req.body.items || [];
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -21,19 +25,22 @@ app.post('/create-checkout-session', async (req, res) => {
           product_data: {
             name: item.name,
           },
-          unit_amount: item.price * 100,
+          unit_amount: Math.round(item.price * 100),
         },
         quantity: item.quantity,
       })),
       success_url: 'https://kolaskollections.ca/success.html',
       cancel_url: 'https://kolaskollections.ca/cart.html',
     });
-res.json({ url: session.url });
+
+    res.json({ url: session.url });
   } catch (error) {
-    console.error(error);
+    console.error('Stripe error:', error);
     res.status(500).json({ error: error.message });
   }
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
