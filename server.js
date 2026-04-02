@@ -28,12 +28,12 @@ app.post('/create-checkout-session', async (req, res) => {
       success_url: 'https://kolaskollections.ca/success.html',
       cancel_url: 'https://kolaskollections.ca/cart.html',
     });
-
-    res.json({ url: session.url });
+res.json({ url: session.url });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: error.message });
   }
 });
 
-app.listen(3000, () => console.log('Server running on port 3000'));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
