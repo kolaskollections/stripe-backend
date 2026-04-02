@@ -26,8 +26,8 @@ app.post('/create-checkout-session', async (req, res) => {
       quantity: item.quantity,
     })),
 
-    success_url: 'https://yourusername.github.io/your-repo-name/success.html',
-cancel_url: 'https://yourusername.github.io/your-repo-name/cart.html',
+    success_url: 'https://kolaskollections.github.io/.ca/success.html',
+cancel_url: 'https://kolaskollections.github.io/.ca/cart.html',
   });
 
   res.json({ url: session.url });
