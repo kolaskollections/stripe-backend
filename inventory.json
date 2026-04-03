@@ -4,5 +4,14 @@
   "Classic Thrift": { "price": 5, "stock": 1 },
   "Luxury Vintage": { "price": 20, "stock": 2 },
   "Designer Piece": { "price": 10, "stock": 4 },
-  "Curated Find": { "price": 30, "stock": 1 }
+  "Curated Find": { "price": 30, "stock": 1 },
+  "Structured Top": { "price": 22, "stock": 5 },
+  "Statement Blouse": { "price": 10, "stock": 4 },
+  "Vintage Knit": { "price": 68, "stock": 2 },
+  "Tailored Trouser": { "price": 96, "stock": 2 },
+  "Wide Leg Denim": { "price": 50, "stock": 3 },
+  "Vintage Skirt": { "price": 74, "stock": 1 },
+  "Leather Bag": { "price": 145, "stock": 2 },
+  "Statement Heel": { "price": 132, "stock": 1 },
+  "Vintage Sunglasses": { "price": 58, "stock": 4 }
 }
